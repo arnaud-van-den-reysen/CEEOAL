@@ -1,0 +1,95 @@
+
+/*
+ * https://css-tricks.com/adaptive-photo-layout-with-flexbox/
+ */
+ ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+li {
+    height: 40vh;
+    flex-grow: 1;
+}
+
+li:last-child {
+    flex-grow: 10;
+}
+
+@media (max-aspect-ratio: 1/1) {
+    li {
+        height: 30vh;
+    }
+}
+
+@media (max-height: 480px) {
+    li {
+        height: 80vh;
+    }
+}
+
+@media (max-aspect-ratio: 1/1) and (max-width: 480px) {
+    ul {
+        flex-direction: row;
+    }
+
+    li {
+        height: auto;
+        width: 100%;
+    }
+
+    img {
+        width: 100%;
+        max-height: 75vh;
+        min-width: 0;
+    }
+}
+
+/*
+ * https://css-tricks.com/snippets/css/scale-on-hover-with-webkit-transition/
+ */
+img {
+    max-height: 100%;
+    min-width: 100%;
+    object-fit: cover;
+    vertical-align: bottom;
+    opacity: 0.5;
+    transition: all .2s ease-in-out;
+}
+
+img:hover {
+    transform: scale(1.1);
+    opacity: 1;
+    z-index: 1;
+    position: relative;
+}
+
+/*
+ * https://css-tricks.com/text-blocks-over-image/
+ */
+.image { 
+    position: relative; 
+}
+
+h2 { 
+    position: absolute; 
+    top: 50%; 
+    left: 0; 
+    width: 80%; 
+}
+
+h2 span { 
+    color: white; 
+    font: bold 24px/45px Helvetica, Sans-Serif; 
+    letter-spacing: -1px;  
+    background: rgb(0, 0, 0); /* fallback color */
+    background: rgba(0, 0, 0, 0.7);
+    padding: 10px; 
+    
+}
+/* if possible handle it with JS or Jquery otherwise */
+h2 span.spacer {
+    padding:0 5px;
+}
